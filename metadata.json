@@ -1,0 +1,5 @@
+{
+  "name": "Metron Trading Platform",
+  "description": "A high-frequency algorithmic trading dashboard with real-time analytics, bot control, and system monitoring.",
+  "requestFramePermissions": []
+}

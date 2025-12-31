@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: metron-web
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      - NODE_ENV=production
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: 7G
+        reservations:
+          cpus: '0.50'
+          memory: 2G
+    networks:
+      - metron-network
+
+networks:
+  metron-network:
+    driver: bridge
