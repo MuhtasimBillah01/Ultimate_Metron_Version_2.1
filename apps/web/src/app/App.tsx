@@ -17,6 +17,7 @@ import { RiskPage } from '@/features/risk-performance';
 import { BacktestPage } from '@/features/backtest';
 import { SettingsPage } from '@/features/settings';
 import { HealthPage } from '@/features/system-health';
+import ControlCenter from '../pages/ControlCenter';
 // Remapped to legacy for now
 import { BotPage, MarketPage, ChartPage, BlankPage1, BlankPage2 } from '@/features/legacy';
 import { SystemStatus } from '@/shared/kernel/types';
@@ -113,6 +114,8 @@ const App: React.FC = () => {
             <Route path="/training" element={<CloudTrainingPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/health" element={<HealthPage status={systemStatus} />} />
+            <Route path="/control-center" element={<ControlCenter />} />
+            <Route path="/control-center" element={<ControlCenter />} />
 
             {/* Keeping placeholders for compatibility */}
             <Route path="/blank1" element={<BlankPage1 />} />

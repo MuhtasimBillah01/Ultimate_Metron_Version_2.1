@@ -40,6 +40,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                     <NavItem to="/logs" icon={<FileText size={18} />} label="Logs" />
                     <NavItem to="/risk" icon={<ShieldAlert size={18} />} label="Risk & Perf" />
                     <NavItem to="/bot" icon={<Bot size={18} />} label="Bot Engine" badge="Active" />
+                    <NavItem to="/control-center" icon={<SettingsIcon size={18} />} label="Control Center" badge="New" />
                     <NavItem to="/backtest" icon={<Activity size={18} />} label="Backtest" />
                     <NavItem to="/training" icon={<CloudLightning size={18} />} label="AI Training" />
 
