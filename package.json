@@ -16,7 +16,7 @@
     "lint-staged": "^16.2.7",
     "turbo": "latest"
   },
-  "packageManager": "npm@11.6.2",
+  "packageManager": "pnpm@10.27.0",
   "engines": {
     "node": ">=18"
   },

@@ -22,6 +22,33 @@ services:
     networks:
       - metron-network
 
+  db:
+    image: timescale/timescaledb:latest-pg14
+    container_name: metron-db
+    restart: always
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=metron
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - metron-network
+
+  redis:
+    image: redis:alpine
+    container_name: metron-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - metron-network
+
 networks:
   metron-network:
     driver: bridge
+
+volumes:
+  postgres_data:

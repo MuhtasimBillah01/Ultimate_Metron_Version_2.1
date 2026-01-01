@@ -10,10 +10,10 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
-RUN npm install
+RUN pnpm install --frozen-lockfile
 
 # Build the project (Turbo repo will handle the build order)
-RUN npm run build
+RUN pnpm run build
 
 # Stage 2: Production Runner
 FROM nginx:alpine
