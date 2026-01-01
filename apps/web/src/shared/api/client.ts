@@ -3,7 +3,8 @@ import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'ax
 import { useAppStore } from '@/shared/kernel/store';
 
 // Define base URL (mock for now, or env variable)
-const BASE_URL = import.meta.env.VITE_API_URL || '/api/v1';
+// Define base URL
+const BASE_URL = '/api';
 
 // Create Axios Instance
 export const apiClient: AxiosInstance = axios.create({

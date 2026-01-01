@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { apiClient } from '@/shared/api/client';
 
 interface BotConfig {
   exchangeType: string;
@@ -24,6 +25,7 @@ interface BotState {
   startBot: () => Promise<void>;
   stopBot: () => Promise<void>;
   killBot: () => Promise<void>;
+  fetchStatus: () => Promise<void>;
 }
 
 export const useBotStore = create<BotState>((set, get) => ({
@@ -42,24 +44,56 @@ export const useBotStore = create<BotState>((set, get) => ({
   setPnL: (pnL) => set({ pnL }),
   setMarketOpen: (open) => set({ isMarketOpen: open }),
   fetchConfig: async () => {
-    // Later: API call to backend
-    // const res = await fetch('/api/config');
-    // set({ config: await res.json() });
+    try {
+      const { data } = await apiClient.get('/config/');
+      set({ config: data });
+    } catch (error) {
+      console.error('Failed to fetch config:', error);
+    }
   },
   saveConfig: async () => {
-    // Later: POST to /api/config
-    console.log('Saving config:', get().config);
+    try {
+      const config = get().config;
+      await apiClient.post('/config/', config);
+      console.log('Config saved successfully');
+    } catch (error) {
+      console.error('Failed to save config:', error);
+    }
   },
   startBot: async () => {
-    // Later: POST /api/bot/start
-    set({ status: 'initializing' });
+    try {
+      await apiClient.post('/bot/start');
+      set({ status: 'running' }); // Optimistic update
+    } catch (error) {
+      console.error('Failed to start bot:', error);
+    }
   },
   stopBot: async () => {
-    // Later: POST /api/bot/stop
-    set({ status: 'stopped' });
+    try {
+      await apiClient.post('/bot/stop');
+      set({ status: 'stopped' });
+    } catch (error) {
+      console.error('Failed to stop bot:', error);
+    }
   },
   killBot: async () => {
-    // Later: POST /api/bot/kill
-    set({ status: 'stopped' });
+    try {
+      await apiClient.post('/bot/kill');
+      set({ status: 'stopped' });
+    } catch (error) {
+      console.error('Failed to kill bot:', error);
+    }
+  },
+  fetchStatus: async () => {
+    try {
+      const { data } = await apiClient.get('/status/');
+      set({
+        status: data.botStatus,
+        pnL: data.pnL,
+        isMarketOpen: data.marketOpen,
+      });
+    } catch (error) {
+      console.error('Failed to fetch status:', error);
+    }
   },
 }));
