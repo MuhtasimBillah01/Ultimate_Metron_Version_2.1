@@ -44,7 +44,7 @@ Dashboard: [http://localhost:4700](http://localhost:4700)
 - Environment variables are in `.env`.
 - Database host is dynamic (`localhost` for local, `db` for docker).
 
-## Automation (In Progress)
-- [🚧] Windows Task Scheduler (.bat startup)
-- [🚧] Startup Timeout (90s)
-- [🚧] Holiday Check Logic
+## Automation
+- [x] Windows Task Scheduler (.bat startup) **(Done)**
+- [x] Startup Timeout (90s/240s) **(Done)**
+- [x] Holiday Check Logic **(Done)**

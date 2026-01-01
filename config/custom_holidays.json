@@ -1,0 +1,28 @@
+{
+    "asset_handlers": {
+        "crypto": "always_open_with_status",
+        "forex": "weekday_with_holidays",
+        "traditional": "calendar_based",
+        "bonds": "calendar_based",
+        "options": "calendar_based",
+        "commodities": "calendar_based",
+        "etf": "calendar_based",
+        "indices": "calendar_based"
+    },
+    "holidays": {
+        "forex": [
+            [
+                1,
+                1
+            ],
+            [
+                12,
+                25
+            ],
+            [
+                12,
+                26
+            ]
+        ]
+    }
+}
