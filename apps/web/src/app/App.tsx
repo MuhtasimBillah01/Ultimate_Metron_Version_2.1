@@ -19,8 +19,9 @@ import { BacktestPage } from '@/features/backtest';
 import { SettingsPage } from '@/features/settings';
 import { HealthPage } from '@/features/system-health';
 import ControlCenter from '../pages/ControlCenter';
+import MarketPage from '../pages/MarketPage'; // New Import
 // Remapped to legacy for now
-import { BotPage, MarketPage, ChartPage, BlankPage1, BlankPage2 } from '@/features/legacy';
+import { BotPage, ChartPage, BlankPage1, BlankPage2 } from '@/features/legacy';
 import { SystemStatus } from '@/shared/kernel/types';
 
 // Placeholder for missing pages
@@ -106,7 +107,7 @@ const App: React.FC = () => {
             <Route path="/" element={<DashboardPage />} />
             <Route path="/chart" element={<ChartPage />} />
             <Route path="/signals" element={<SignalsPage />} />
-            <Route path="/market" element={<MarketPage />} />
+            <Route path="/market-analysis" element={<MarketPage />} />
             <Route path="/positions" element={<PositionsPage />} />
             <Route path="/logs" element={<LogsPage />} />
             <Route path="/risk" element={<RiskPage />} />

@@ -10,3 +10,4 @@ pandas_ta
 pandas_market_calendars
 ccxt
 yfinance
+redis

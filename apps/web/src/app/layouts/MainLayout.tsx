@@ -35,7 +35,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                     <NavItem to="/" icon={<LayoutDashboard size={18} />} label="Dashboard" end />
                     <NavItem to="/chart" icon={<LineChart size={18} />} label="Chart" />
                     <NavItem to="/signals" icon={<Radio size={18} />} label="Signals" />
-                    <NavItem to="/market" icon={<Globe size={18} />} label="Market Intel" badge="New" />
+                    <NavItem to="/market-analysis" icon={<Globe size={18} />} label="Market Analysis" badge="Phase 2" />
                     <NavItem to="/positions" icon={<List size={18} />} label="Positions" />
                     <NavItem to="/logs" icon={<FileText size={18} />} label="Logs" />
                     <NavItem to="/risk" icon={<ShieldAlert size={18} />} label="Risk & Perf" />
