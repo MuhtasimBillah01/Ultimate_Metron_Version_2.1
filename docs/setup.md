@@ -23,7 +23,7 @@ docker-compose up -d
 The backend is located in `apps/api`.
 ```bash
 # Install dependencies
-pip install -r requirements.txt
+pip install pandas numpy pandas_ta ccxt yfinance pandas_market_calendars -r requirements.txt
 
 # Run the API server (Auto-reloads)
 cd apps/api

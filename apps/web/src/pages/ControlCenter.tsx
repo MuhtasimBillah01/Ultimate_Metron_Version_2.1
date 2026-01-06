@@ -31,8 +31,17 @@ const ControlCenter: React.FC = () => {
     const [logs, setLogs] = useState<string[]>([]);
     const [pnLChartData, setPnLChartData] = useState(pnLData);
     const ws = useRef<WebSocket | null>(null);
+    const logsContainerRef = useRef<HTMLDivElement>(null);
+
+    // Auto-scroll logs to bottom
+    useEffect(() => {
+        if (logsContainerRef.current) {
+            logsContainerRef.current.scrollTop = logsContainerRef.current.scrollHeight;
+        }
+    }, [logs]);
 
     useEffect(() => {
+        console.log("ControlCenter MOUNTED");
         fetchConfig(); // Load on mount
 
         // WebSocket Connection
@@ -119,13 +128,15 @@ const ControlCenter: React.FC = () => {
             <Card>
                 <CardHeader><CardTitle>Live Logs</CardTitle></CardHeader>
                 <CardContent>
-                    <div className="h-64 overflow-y-auto font-mono text-sm bg-black text-green-400 p-4 rounded scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-black">
+                    <div
+                        ref={logsContainerRef}
+                        className="h-64 overflow-y-auto font-mono text-sm bg-black text-green-400 p-4 rounded scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-black"
+                    >
                         {logs.length === 0 ? (
                             <div className="opacity-50 italic">Waiting for logs...</div>
                         ) : (
                             logs.map((log, i) => <div key={i}>{log}</div>)
                         )}
-                        <div ref={(el) => el?.scrollIntoView({ behavior: "smooth" })} />
                     </div>
                 </CardContent>
             </Card>

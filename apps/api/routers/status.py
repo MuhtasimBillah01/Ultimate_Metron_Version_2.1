@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from utils.market_calendar import is_trading_day
+from apps.api.utils.market_calendar import is_trading_day
 import psutil
 
 router = APIRouter(prefix="/status", tags=["status"])

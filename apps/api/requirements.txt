@@ -4,3 +4,9 @@ pydantic
 python-dotenv
 websockets
 psutil
+pandas
+numpy
+pandas_ta
+pandas_market_calendars
+ccxt
+yfinance

@@ -116,7 +116,6 @@ const App: React.FC = () => {
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/health" element={<HealthPage status={systemStatus} />} />
             <Route path="/control-center" element={<ControlCenter />} />
-            <Route path="/control-center" element={<ControlCenter />} />
 
             {/* Keeping placeholders for compatibility */}
             <Route path="/blank1" element={<BlankPage1 />} />

@@ -49,6 +49,22 @@ All development MUST adhere to the **Hybrid Monorepo Structure**. Do NOT create 
 - If the user asks to "add a model", put it in `models/`, NOT in `src`.
 - **ALWAYS** remind the user if a request violates this structure.
 
+## 7. Technical Analysis & Data Processing
+This project follows a strict convention for generating market indicators and features for ML models.
+
+### 7.1 Feature Engineering Standard
+- All technical indicators MUST be generated using the `MarketFeatureProcessor` class located in `apps/api/utils/technical_features.py`.
+- **Naming Convention:** Output features must use lowercase keys (e.g., `trend_sope_ema50`, `mom_rsi`).
+- **Dependencies:** Use `pandas_ta` for calculations. Do NOT write custom math unless absolutely necessary.
+
+### 7.2 Data Fetching & Integration Rules
+- **Hybrid Approach:**
+  - **Crypto:** Use `ccxt` with `async_support` for high-performance crypto data fetching (Binance, Bybit, etc.).
+  - **Stocks/Forex:** Use `yfinance` only for prototyping or non-critical data.
+- **Router Implementation:**
+  - **Direct Import (Recommended):** Always import the Processor class directly (`from apps.api.utils...`) in FastAPI routers for production efficiency.
+  - **Subprocess (Avoid):** Avoid running Python scripts via `subprocess.run` in production routers as it creates high latency. Use this method ONLY for CLI testing or isolated worker scripts.
+
 ---
 *Verified and Locked by User Command [Step 1013]*
 
